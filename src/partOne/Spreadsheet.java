@@ -14,28 +14,32 @@ public class Spreadsheet {
         this.cells = new Cell[width][height]; // Initialize a 2D array to store cells
     }
 
-    public void set(int x, int y, Cell cell) {
-        cells[x][y] = cell; // Assign a cell to a specific position in the spreadsheet
+    public void set(int x, int y, Cell c) {
+        cells[x][y] = c; // Assign a cell to a specific position in the spreadsheet
     }
 
     public Cell get(int x, int y) {
         return cells[x][y]; // Retrieve a cell from a specific position
     }
 
-    public int xCell(String reference) {
-        if (reference.length() < 2) { // Validate reference format
+    public int xCell(String c) {
+        if (c.length() < 2 || !Character.isDigit(c.charAt(1))) { // Validate reference format
             return -1;
         }
-        char col = reference.charAt(0);
+        char col = c.charAt(0);
         if (col < 'A' || col > 'Z') { // Ensure column reference is within 'A' to 'Z'
             return -1;
         }
         return col - 'A'; // Convert column letter to zero-based index
     }
 
-    public int yCell(String reference) {
+    public int yCell(String c) {
         try {
-            return Integer.parseInt(reference.substring(1)) - 1; // Convert row number (1-based) to zero-based index
+            if (Integer.parseInt(c.substring(1)) - 1 >= 0 && Integer.parseInt(c.substring(1)) - 1 < 100) {
+                return Integer.parseInt(c.substring(1)) - 1;
+            }
+            else
+                return -1; // Convert row number (1-based) to zero-based index
         } catch (NumberFormatException e) {
             return -1; // Handle invalid row numbers
         }

@@ -1,3 +1,5 @@
+package partOne;
+
 public class Cell {
     private String value; // The value of the cell as a string
     private final Spreadsheet parentSheet; // Reference to the parent spreadsheet

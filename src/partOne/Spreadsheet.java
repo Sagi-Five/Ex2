@@ -1,3 +1,5 @@
+package partOne;
+
 public class Spreadsheet {
     private final int width;
     private final int height;
@@ -5,7 +7,7 @@ public class Spreadsheet {
 
     public Spreadsheet(int width, int height) {
         if (width > 26 || height > 100) { // Limit the spreadsheet dimensions to 26 columns and 100 rows
-            throw new IllegalArgumentException("Spreadsheet dimensions exceed allowed limits: 26x100");
+            throw new IllegalArgumentException("partOne.Spreadsheet dimensions exceed allowed limits: 26x100");
         }
         this.width = width;
         this.height = height;
